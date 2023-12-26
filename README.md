@@ -1,3 +1,38 @@
+# Angular & TypeScript - Angular Api Giphy App
+
+---
+
+# Temas puntuales de la sección
+
+### ¿Qué veremos en esta sección?
+
+En esta sección veremos:
+
+- Modularización de la aplicación
+- Estructura de la aplicación de media a gran escala
+- Componentes
+- ViewChild
+- Servicios
+- Historial de búsquedas
+- Uso de Api Keys
+- LocalStorage
+- Peticiones HTTP
+- Animaciones mediante css
+
+### \* PASOS A REALIZAR:
+
+1. ejemplo
+2. ejemplo
+3. ejemplo
+
+### \* RECURSOS A USAR:
+
+- ejemplo
+- ejemplo
+- ejemplo
+
+---
+
 # AngularApiGiphyApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
