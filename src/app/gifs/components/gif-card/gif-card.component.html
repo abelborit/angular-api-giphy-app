@@ -1,0 +1,21 @@
+<div class="card text-center bg-light p-1">
+  <app-shared-lazy-image
+    [imgSrc]="{
+      imageUrl: gifInfo.images.downsized_medium.url,
+      imageName: gifInfo.title
+    }"
+  ></app-shared-lazy-image>
+
+  <div>
+    <div class="card-body text-dark">
+      <p class="card-text">
+        {{ gifInfo.title !== "" ? gifInfo.title : "-- No title --" }}
+      </p>
+
+      <!-- imprimir directamente el valor de gifInfo.title para verificar si tiene contenido. Esto imprimirá el valor de gifInfo.title como un objeto JSON, lo que te permitirá verificar si está o no presente y si tiene o no datos. -->
+      <!-- <p class="card-text">
+        {{ gifInfo.title | json }}
+      </p> -->
+    </div>
+  </div>
+</div>

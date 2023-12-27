@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-center">
+  <!-- se puede colocar con doble llave o sino cuando el valor de algún atributo del elemento HTML sea código JavaScript se hará con llave [] -->
+  <!-- <img src="{{ imgSrc.imageUrl }}" alt="{{ imgSrc.imageName }}" /> -->
+
+  <!-- las imágenes en Angular tienen un evento llamdo load donde loadStart es cuando empieza a cargar la imagen y load es cuando ya se cargó la imagen, entonces cuando ya se cargó la imagen llamará a la función handleLoadImage() -->
+  <!-- Con ngStyle, puedes vincular un objeto que exprese tantas condiciones y casos como necesites o sino también colocarlo de forma directa como en este caso -->
+  <img
+    [src]="imgSrc.imageUrl"
+    [alt]="imgSrc.imageName"
+    class="card card-img-top animate__animated animate__fadeIn"
+    style="height: 250px; object-fit: cover"
+    (load)="handleLoadImage()"
+    [ngStyle]="{ display: hasLoaded ? '' : 'none' }"
+  />
+
+  <img
+    *ngIf="!hasLoaded"
+    src="assets/loader.svg"
+    alt="Loader"
+    height="60"
+    width="60"
+    style="height: 250px"
+  />
+</div>
