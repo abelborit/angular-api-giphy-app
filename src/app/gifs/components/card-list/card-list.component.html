@@ -1,8 +1,17 @@
 <div class="row">
-  <div class="col-md-3 col-sm-6">
-    <div class="card mb-2 text-center bg-dark">
+  <div *ngFor="let item of gifsList" class="col-md-3 col-sm-6 mb-5">
+    <!-- se puede colocar con doble llave o sino cuando el valor de algún atributo del elemento HTML sea código JavaScript se hará con llave [] -->
+    <!-- <img src="{{ item.images.downsized_medium.url }}" alt="{{ item.title }}" /> -->
+    <img
+      [src]="item.images.downsized_medium.url"
+      [alt]="item.title"
+      class="card card-img-top"
+      style="height: 250px; object-fit: cover"
+    />
+
+    <div class="card text-center bg-dark">
       <div class="card-body text-white">
-        <p class="card-text">Hola Mundo</p>
+        <p class="card-text">{{ item.title }}</p>
       </div>
     </div>
   </div>

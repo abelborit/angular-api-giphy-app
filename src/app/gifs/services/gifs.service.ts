@@ -13,6 +13,7 @@ export class GifsService {
   private _tagsHistory: string[] = [];
   private serviceUrl: string = 'https://api.giphy.com/v1/gifs';
 
+  /* gifsList se trabaja como público porque esta es una data volatil, es decir, que cambiará conforme se pida diferente data en comparación al _tagsHistory que no necesariamente será tan volatil o cambiante a menos que nosotros le digamos cómo queremos que cambie y ya lo hacemos abajo al añadirle nuevos strings como un historial pero igual gifsList se podría trabajar como private y hacer lo mismo que se hizo con _tagsHistory */
   public gifsList: Gif[] = [];
 
   get getTagsHistory_Service() {
@@ -51,7 +52,7 @@ export class GifsService {
     const paramsAPI = new HttpParams()
       .set('api_key', environment.GIPHY_API_KEY)
       .set('q', searchValue)
-      .set('limit', '10');
+      .set('limit', '15');
     /* aquí no se trabajará como promesa sino se trabajará como un observable y este es un objeto en el cual a lo largo del tiempo puede estar emitiendo diferentes valores. Usualmente cuando hablamos de “suscribimos a los observables”, significa estar escuchando las emisiones que ese objeto estará emitiendo a lo largo de su vida. En este caso este observable emitirá un valor cuando tengamos la respuesta pero hay observables que son continuos, es decir, siempre están emitiendo valores y nosotros trabajamos en base a esas emisiones. Para escuchar la respuesta nos tenemos que suscribir a este observable. El (observer) => {...} sería como colocar (response) => {...}. También se trabajará con el HttpParams que viene de Angular */
     this.HttpClient.get<SearchResponse>(`${this.serviceUrl}/search`, {
       params: paramsAPI,
