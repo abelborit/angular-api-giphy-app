@@ -3,6 +3,13 @@
   <hr class="text-light" />
 
   <div class="list-group list-reset">
-    <button class="list-group-item list-group-item-action">Valorant</button>
+    <button
+      *ngFor="let item of getTags; let index = index"
+      class="list-group-item list-group-item-action"
+    >
+      <!-- se hará uso de los Pipe de Angular, los cuales son un objeto que permite transformar de manera visual la información que mostraremos en pantalla sin mutar la data real y en este caso será el Pipe de titlecase para capitalizar las palabras en este caso cada item -->
+      <strong>{{ index + 1 }}.</strong>
+      {{ item | titlecase }}
+    </button>
   </div>
 </div>

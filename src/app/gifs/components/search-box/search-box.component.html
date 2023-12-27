@@ -1,7 +1,7 @@
 <h5>Search</h5>
 
 <!-- sin el @ViewChild se tiene la referencia local y de ahí se toma el input -->
-<!-- aquí no se usará el FormsModule para luego tener acceso al NgModule para únicamente trabajar con este input, sino que se trabajará con lo que es conocido como una referencia local que es colocar #NombreReferencia donde en este caso será #inputSearchValue y con esto entonces este input será conocido con ese nombre en este template HTML, y con eso se harían referencias al HTML -->
+<!-- aquí no se usará el FormsModule para luego tener acceso al NgModule para únicamente trabajar con este input, sino que se trabajará con lo que es conocido como una referencia local que es colocar #NombreReferencia donde en este caso será #inputSearchValue y con esto entonces este input será conocido con ese nombre en este template HTML, y con eso se harían referencias al HTML (https://angular.io/guide/template-reference-variables) -->
 <!-- el keyup es para que cada vez que se levante alguna tecla entonces realice una funcionalidad pero en el caso de hacer una llamada HTTP puede que no se quiera eso porque son llamadas innecesarias al servidor, entonces con Angular cubre una característica importante que viene con el keyup que sería .enter y con esto entonces al hacer el keyup de la tecla enter recién se realizará la funcionalidad que hayamos creado -->
 <!-- <input
   type="text"
