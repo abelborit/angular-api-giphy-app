@@ -18,4 +18,8 @@ export class SidebarComponent {
   handleSearchByTag(tag: string): void {
     this.GifsService.handleSearchValue_Service(tag);
   }
+
+  handleCleanStorage(): void {
+    this.GifsService.clearLocalStorage();
+  }
 }

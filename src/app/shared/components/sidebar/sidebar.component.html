@@ -12,5 +12,14 @@
       <strong>{{ index + 1 }}.</strong>
       {{ item | titlecase }}
     </button>
+
+    <!-- si getTags tiene más de 0 elementos entonces recién se muestra el botón -->
+    <button
+      *ngIf="getTags.length > 0"
+      class="btn btn-danger mt-4"
+      (click)="handleCleanStorage()"
+    >
+      Clear
+    </button>
   </div>
 </div>

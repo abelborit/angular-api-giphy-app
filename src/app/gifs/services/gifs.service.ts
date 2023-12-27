@@ -7,7 +7,11 @@ import { Gif, SearchResponse } from '../interfaces/gifs.interfaces';
 @Injectable({ providedIn: 'root' })
 export class GifsService {
   /* para trabajar con HTTP con lo propio de Angular aquí se utilizará el servicio propio de HttpClient. HttpClient es la clase con la que realizamos las request la cual es basicamente un servicio. */
-  constructor(private HttpClient: HttpClient) {}
+  constructor(private HttpClient: HttpClient) {
+    /* cuando mi servicio sea inyectado la primera vez y solo ahí se ejecutará lo siguiente: */
+    // console.log('first time');
+    this.loadLocalStorage();
+  }
 
   /* se coloca con guión bajo _ por convención al trabajar con clases para indicar que será una propiedad privada y que no se accederá a ella de forma directa para evitar manipularla o hacerle cambios de forma directa, pero no afecta en nada colocar o no, es solo para tener una referencia que es una propiedad privada */
   private _tagsHistory: string[] = [];
@@ -19,6 +23,31 @@ export class GifsService {
   get getTagsHistory_Service() {
     /* como los objetos y arreglos se pasan por referencia entonces se creará una copia para romper esa referencia y generar un nuevo arreglo */
     return [...this._tagsHistory];
+  }
+
+  private saveLocalStorage(): void {
+    localStorage.setItem('tagsHistory', JSON.stringify(this._tagsHistory));
+  }
+
+  private loadLocalStorage(): void {
+    /* colocar primero una validación si existe en el localStorage */
+    if (!localStorage.getItem('tagsHistory')) return;
+    /* colocar una validación adicional que pide el localStorage.getItem() ya que puede ser null */
+    this._tagsHistory = JSON.parse(localStorage.getItem('tagsHistory') || '[]');
+
+    if (this._tagsHistory.length === 0) return;
+    this.handleSearchValue_Service(this._tagsHistory[0]);
+  }
+
+  /* el diseño de las funciones clearLocalStorage y clearTagsHistoryGifsList estarían bien. clearLocalStorage es el método público que se encarga de la limpieza del localStorage y de llamar al método privado clearTagsHistoryGifsList para realizar la manipulación directa de los estados internos de la clase. Este diseño sigue el principio de encapsulación, ya que el método privado clearTagsHistoryGifsList se encarga de realizar una tarea específica dentro de la clase, y el método público clearLocalStorage se encarga de exponer la funcionalidad que el usuario de la clase debería utilizar. */
+  private clearTagsHistoryGifsList(): void {
+    this._tagsHistory = [];
+    this.gifsList = [];
+  }
+
+  public clearLocalStorage(): void {
+    localStorage.removeItem('tagsHistory');
+    this.clearTagsHistoryGifsList();
   }
 
   private organizeTagsHistory(searchValue: string) {
@@ -34,6 +63,7 @@ export class GifsService {
     this._tagsHistory.unshift(searchValue);
     /* solo 15 elementos en el array */
     this._tagsHistory = this._tagsHistory.splice(0, 15);
+    this.saveLocalStorage();
   }
 
   handleSearchValue_Service(searchValue: string): void {
