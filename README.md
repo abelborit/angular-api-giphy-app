@@ -25,9 +25,15 @@ En esta sección veremos:
 2. ejemplo
 3. ejemplo
 
+### \* NOTAS:
+
+1. Modularización de la aplicación: El patrón de diseño en el proyecto se conoce como "Organización por carpetas" o "Estructura de carpetas modular". Este patrón se refiere a la forma en que los diferentes archivos y componentes del proyecto están organizados en carpetas específicas para facilitar el desarrollo y mantenimiento de la aplicación. En esta estructura, los diferentes tipos de archivos, componentes y funcionalidades se agrupan en carpetas con nombres significativos, lo que hace que el proyecto sea más legible, mantenible y escalable. Esta estructura de carpetas es una práctica común y recomendada para organizar proyectos en Angular. Al seguir esta estructura, se obtiene un código más limpio y organizado, lo que ayuda a mantener la escalabilidad y la legibilidad del proyecto a medida que crece.
+2. ejemplo
+3. ejemplo
+
 ### \* RECURSOS A USAR:
 
-- ejemplo
+- GIPHY: https://developers.giphy.com/
 - ejemplo
 - ejemplo
 
